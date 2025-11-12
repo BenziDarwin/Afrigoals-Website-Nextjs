@@ -1,8 +1,20 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { supabase, User, UserRole } from './supabase';
-import { Session } from '@supabase/supabase-js';
+
+// Mock user types
+export type UserRole = 'admin' | 'user';
+export interface User {
+  id: string;
+  email: string;
+  full_name: string;
+  role: UserRole;
+}
+
+interface Session {
+  access_token: string;
+  user: User;
+}
 
 interface AuthContextType {
   user: User | null;
@@ -21,70 +33,65 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      if (session?.user) {
-        loadUserProfile(session.user.id);
-      } else {
-        setLoading(false);
-      }
-    });
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
-      (async () => {
-        setSession(session);
-        if (session?.user) {
-          await loadUserProfile(session.user.id);
-        } else {
-          setUser(null);
-          setLoading(false);
-        }
-      })();
-    });
-
-    return () => subscription.unsubscribe();
+    // Simulate loading session from localStorage
+    const storedUser = localStorage.getItem('mockUser');
+    if (storedUser) {
+      const parsedUser: User = JSON.parse(storedUser);
+      setUser(parsedUser);
+      setSession({
+        access_token: 'mock-token',
+        user: parsedUser,
+      });
+    }
+    setLoading(false);
   }, []);
 
-  const loadUserProfile = async (userId: string) => {
-    try {
-      const { data, error } = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', userId)
-        .maybeSingle();
-
-      if (error) throw error;
-      setUser(data);
-    } catch (error) {
-      console.error('Error loading user profile:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const signIn = async (email: string, password: string) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Simulate delay
+
+    // Mock sign-in success
+    const mockUser: User = {
+      id: 'mock-id-123',
+      email,
+      full_name: 'Mock User',
+      role: 'user',
+    };
+
+    localStorage.setItem('mockUser', JSON.stringify(mockUser));
+    setUser(mockUser);
+    setSession({
+      access_token: 'mock-access-token',
+      user: mockUser,
+    });
+    setLoading(false);
   };
 
   const signUp = async (email: string, password: string, fullName: string, role: UserRole) => {
-    const { data, error } = await supabase.auth.signUp({ email, password });
-    if (error) throw error;
+    setLoading(true);
+    await new Promise((resolve) => setTimeout(resolve, 800)); // Simulate delay
 
-    if (data.user) {
-      const { error: profileError } = await supabase.from('users').insert({
-        id: data.user.id,
-        email,
-        full_name: fullName,
-        role,
-      });
-      if (profileError) throw profileError;
-    }
+    const newUser: User = {
+      id: `mock-${Date.now()}`,
+      email,
+      full_name: fullName,
+      role,
+    };
+
+    localStorage.setItem('mockUser', JSON.stringify(newUser));
+    setUser(newUser);
+    setSession({
+      access_token: 'mock-access-token',
+      user: newUser,
+    });
+    setLoading(false);
   };
 
   const signOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) throw error;
+    await new Promise((resolve) => setTimeout(resolve, 300)); // Simulate delay
+    localStorage.removeItem('mockUser');
+    setUser(null);
+    setSession(null);
   };
 
   return (
