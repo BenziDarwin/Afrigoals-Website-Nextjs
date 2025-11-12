@@ -1,43 +1,62 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { Video, BarChart3, Users, Trophy, Newspaper, Shield } from 'lucide-react';
-import { Card } from '@/components/ui/card';
+import { useEffect, useRef, useState } from "react";
+import {
+  Video,
+  BarChart3,
+  Users,
+  Trophy,
+  Newspaper,
+  Shield,
+} from "lucide-react";
+import { Card } from "@/components/ui/card";
 
 const features = [
   {
     icon: Video,
-    title: 'Video Analytics',
-    description: 'Upload match videos and get AI-powered insights on player performance, tactics, and key moments.',
+    title: "Video Analytics",
+    description:
+      "Upload match videos and get AI-powered insights on player performance, tactics, and key moments.",
   },
   {
     icon: BarChart3,
-    title: 'Advanced Statistics',
-    description: 'Comprehensive player and team statistics including goals, assists, possession, and heat maps.',
+    title: "Advanced Statistics",
+    description:
+      "Comprehensive player and team statistics including goals, assists, possession, and heat maps.",
   },
   {
     icon: Users,
-    title: 'League Management',
-    description: 'Complete tools for league managers to organize fixtures, manage teams, and track standings.',
+    title: "League Management",
+    description:
+      "Complete tools for league managers to organize fixtures, manage teams, and track standings.",
   },
   {
     icon: Trophy,
-    title: 'Club Dashboard',
-    description: 'Dedicated dashboards for clubs to manage players, formations, and match preparations.',
+    title: "Club Dashboard",
+    description:
+      "Dedicated dashboards for clubs to manage players, formations, and match preparations.",
   },
   {
     icon: Newspaper,
-    title: 'News & Updates',
-    description: 'Stay updated with real-time match reports, news articles, and video highlights.',
+    title: "News & Updates",
+    description:
+      "Stay updated with real-time match reports, news articles, and video highlights.",
   },
   {
     icon: Shield,
-    title: 'Secure Platform',
-    description: 'Role-based access control ensuring data security and proper permission management.',
+    title: "Secure Platform",
+    description:
+      "Role-based access control ensuring data security and proper permission management.",
   },
 ];
 
-function FeatureCard({ feature, index }: { feature: typeof features[0]; index: number }) {
+function FeatureCard({
+  feature,
+  index,
+}: {
+  feature: (typeof features)[0];
+  index: number;
+}) {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -49,7 +68,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
           observer.unobserve(entry.target);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (cardRef.current) {
@@ -65,7 +84,7 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
     <div
       ref={cardRef}
       className={`transition-all duration-700 ${
-        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
@@ -74,8 +93,12 @@ function FeatureCard({ feature, index }: { feature: typeof features[0]; index: n
           <Icon className="w-7 h-7 text-white" />
         </div>
 
-        <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-        <p className="text-neutral-400 leading-relaxed">{feature.description}</p>
+        <h3 className="text-xl font-semibold mb-3 text-white">
+          {feature.title}
+        </h3>
+        <p className="text-neutral-400 leading-relaxed">
+          {feature.description}
+        </p>
       </Card>
     </div>
   );
@@ -90,7 +113,8 @@ export function FeaturesSection() {
             Everything You Need
           </h2>
           <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
-            Powerful features designed to elevate African football to the next level
+            Powerful features designed to elevate African football to the next
+            level
           </p>
         </div>
 

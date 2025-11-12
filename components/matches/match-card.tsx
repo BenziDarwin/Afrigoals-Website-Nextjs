@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Match, Club } from '@/lib/supabase';
-import { format } from 'date-fns';
-import { Calendar, MapPin } from 'lucide-react';
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Match, Club } from "@/lib/supabase";
+import { format } from "date-fns";
+import { Calendar, MapPin } from "lucide-react";
 
 interface MatchCardProps {
   match: Match & {
@@ -16,16 +16,16 @@ interface MatchCardProps {
 export function MatchCard({ match }: MatchCardProps) {
   const getStatusColor = (status: string) => {
     switch (status) {
-      case 'live':
-        return 'bg-red-500 animate-pulse';
-      case 'completed':
-        return 'bg-green-500';
-      case 'scheduled':
-        return 'bg-blue-500';
-      case 'cancelled':
-        return 'bg-neutral-500';
+      case "live":
+        return "bg-red-500 animate-pulse";
+      case "completed":
+        return "bg-green-500";
+      case "scheduled":
+        return "bg-blue-500";
+      case "cancelled":
+        return "bg-neutral-500";
       default:
-        return 'bg-neutral-500';
+        return "bg-neutral-500";
     }
   };
 
@@ -34,9 +34,13 @@ export function MatchCard({ match }: MatchCardProps) {
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center space-x-2 text-sm text-neutral-400">
           <Calendar size={16} />
-          <span>{format(new Date(match.match_date), 'MMM d, yyyy - HH:mm')}</span>
+          <span>
+            {format(new Date(match.match_date), "MMM d, yyyy - HH:mm")}
+          </span>
         </div>
-        <Badge className={`${getStatusColor(match.status)} text-white capitalize`}>
+        <Badge
+          className={`${getStatusColor(match.status)} text-white capitalize`}
+        >
           {match.status}
         </Badge>
       </div>
@@ -45,18 +49,24 @@ export function MatchCard({ match }: MatchCardProps) {
         <div className="text-center">
           <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-neutral-700 flex items-center justify-center overflow-hidden">
             {match.home_club?.logo_url ? (
-              <img src={match.home_club.logo_url} alt={match.home_club.name} className="w-full h-full object-cover" />
+              <img
+                src={match.home_club.logo_url}
+                alt={match.home_club.name}
+                className="w-full h-full object-cover"
+              />
             ) : (
               <span className="text-2xl font-bold text-neutral-500">
-                {match.home_club?.name?.charAt(0) || 'H'}
+                {match.home_club?.name?.charAt(0) || "H"}
               </span>
             )}
           </div>
-          <p className="text-white font-semibold">{match.home_club?.name || 'Home Team'}</p>
+          <p className="text-white font-semibold">
+            {match.home_club?.name || "Home Team"}
+          </p>
         </div>
 
         <div className="text-center">
-          {match.status === 'completed' || match.status === 'live' ? (
+          {match.status === "completed" || match.status === "live" ? (
             <div className="text-4xl font-bold text-white">
               {match.home_score} - {match.away_score}
             </div>
@@ -68,14 +78,20 @@ export function MatchCard({ match }: MatchCardProps) {
         <div className="text-center">
           <div className="w-16 h-16 mx-auto mb-2 rounded-full bg-neutral-700 flex items-center justify-center overflow-hidden">
             {match.away_club?.logo_url ? (
-              <img src={match.away_club.logo_url} alt={match.away_club.name} className="w-full h-full object-cover" />
+              <img
+                src={match.away_club.logo_url}
+                alt={match.away_club.name}
+                className="w-full h-full object-cover"
+              />
             ) : (
               <span className="text-2xl font-bold text-neutral-500">
-                {match.away_club?.name?.charAt(0) || 'A'}
+                {match.away_club?.name?.charAt(0) || "A"}
               </span>
             )}
           </div>
-          <p className="text-white font-semibold">{match.away_club?.name || 'Away Team'}</p>
+          <p className="text-white font-semibold">
+            {match.away_club?.name || "Away Team"}
+          </p>
         </div>
       </div>
 

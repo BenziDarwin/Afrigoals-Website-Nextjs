@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Bell, Search, LogOut } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Bell, Search, LogOut } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +10,9 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { User } from '@/lib/supabase';
+} from "@/components/ui/dropdown-menu";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { User } from "@/lib/supabase";
 
 interface HeaderProps {
   user: User;
@@ -21,16 +21,19 @@ interface HeaderProps {
 
 export function DashboardHeader({ user, onSignOut }: HeaderProps) {
   const initials = user.full_name
-    .split(' ')
+    .split(" ")
     .map((n) => n[0])
-    .join('')
+    .join("")
     .toUpperCase();
 
   return (
     <header className="h-16 bg-neutral-900 border-b border-neutral-800 flex items-center justify-between px-6">
       <div className="flex items-center flex-1 max-w-2xl">
         <div className="relative w-full">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500" size={20} />
+          <Search
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-500"
+            size={20}
+          />
           <Input
             placeholder="Search..."
             className="pl-10 bg-neutral-800 border-neutral-700 text-white"
@@ -58,15 +61,22 @@ export function DashboardHeader({ user, onSignOut }: HeaderProps) {
                 </AvatarFallback>
               </Avatar>
               <div className="text-left">
-                <div className="text-sm font-medium text-white">{user.full_name}</div>
+                <div className="text-sm font-medium text-white">
+                  {user.full_name}
+                </div>
                 <div className="text-xs text-neutral-400 capitalize">
-                  {user.role.replace('_', ' ')}
+                  {user.role.replace("_", " ")}
                 </div>
               </div>
             </button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 bg-neutral-800 border-neutral-700">
-            <DropdownMenuLabel className="text-white">My Account</DropdownMenuLabel>
+          <DropdownMenuContent
+            align="end"
+            className="w-56 bg-neutral-800 border-neutral-700"
+          >
+            <DropdownMenuLabel className="text-white">
+              My Account
+            </DropdownMenuLabel>
             <DropdownMenuSeparator className="bg-neutral-700" />
             <DropdownMenuItem className="text-neutral-300 focus:text-white focus:bg-neutral-700">
               Profile

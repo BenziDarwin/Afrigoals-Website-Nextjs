@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { Navigation } from '@/components/landing/navigation';
-import { Footer } from '@/components/landing/footer';
-import { mockArticlesDetailed } from '@/lib/mock-data-enhanced';
-import { Badge } from '@/components/ui/badge';
-import { ArrowLeft, Calendar, Clock, User } from 'lucide-react';
-import { format } from 'date-fns';
-import { useRouter } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import { ArticleLikes } from '@/components/news/article-likes';
-import { ArticleComments } from '@/components/news/article-comments';
+import { Navigation } from "@/components/landing/navigation";
+import { Footer } from "@/components/landing/footer";
+import { mockArticlesDetailed } from "@/lib/mock-data-enhanced";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft, Calendar, Clock, User } from "lucide-react";
+import { format } from "date-fns";
+import { useRouter } from "next/navigation";
+import ReactMarkdown from "react-markdown";
+import { ArticleLikes } from "@/components/news/article-likes";
+import { ArticleComments } from "@/components/news/article-comments";
 
 export default function ArticleClient({ slug }: { slug: string }) {
   const router = useRouter();
-  const article = mockArticlesDetailed.find(a => a.slug === slug);
+  const article = mockArticlesDetailed.find((a) => a.slug === slug);
 
   if (!article) {
     return (
@@ -40,9 +40,15 @@ export default function ArticleClient({ slug }: { slug: string }) {
           <article className="animate-in fade-in-50 slide-in-from-bottom-5 duration-700">
             <div className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
-                <Badge className="bg-primary-500 capitalize">{article.category.replace('_', ' ')}</Badge>
+                <Badge className="bg-primary-500 capitalize">
+                  {article.category.replace("_", " ")}
+                </Badge>
                 {article.tags?.map((tag, index) => (
-                  <Badge key={index} variant="outline" className="border-neutral-700 text-neutral-300">
+                  <Badge
+                    key={index}
+                    variant="outline"
+                    className="border-neutral-700 text-neutral-300"
+                  >
                     {tag}
                   </Badge>
                 ))}
@@ -59,7 +65,7 @@ export default function ArticleClient({ slug }: { slug: string }) {
                 </div>
                 <div className="flex items-center">
                   <Calendar size={16} className="mr-1" />
-                  {format(new Date(article.published_at), 'MMMM d, yyyy')}
+                  {format(new Date(article.published_at), "MMMM d, yyyy")}
                 </div>
                 <div className="flex items-center">
                   <Clock size={16} className="mr-1" />
@@ -82,13 +88,19 @@ export default function ArticleClient({ slug }: { slug: string }) {
               <ReactMarkdown
                 components={{
                   h2: ({ children }) => (
-                    <h2 className="text-3xl font-bold text-white mt-8 mb-4">{children}</h2>
+                    <h2 className="text-3xl font-bold text-white mt-8 mb-4">
+                      {children}
+                    </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-2xl font-bold text-white mt-6 mb-3">{children}</h3>
+                    <h3 className="text-2xl font-bold text-white mt-6 mb-3">
+                      {children}
+                    </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-neutral-300 leading-relaxed mb-4">{children}</p>
+                    <p className="text-neutral-300 leading-relaxed mb-4">
+                      {children}
+                    </p>
                   ),
                   ul: ({ children }) => (
                     <ul className="list-disc list-inside text-neutral-300 mb-4 space-y-2">

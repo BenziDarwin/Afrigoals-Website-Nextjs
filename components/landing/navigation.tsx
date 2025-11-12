@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Menu, X } from 'lucide-react';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import Image from 'next/image';
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -17,23 +17,23 @@ export function Navigation() {
       setIsScrolled(window.scrollY > 10);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { href: '/#features', label: 'Features' },
-    { href: '/matches', label: 'Matches' },
-    { href: '/news', label: 'News' },
-    { href: '/#about', label: 'About' },
+    { href: "/#features", label: "Features" },
+    { href: "/matches", label: "Matches" },
+    { href: "/news", label: "News" },
+    { href: "/#about", label: "About" },
   ];
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-neutral-900/95 backdrop-blur-lg shadow-lg border-b border-neutral-800'
-          : 'bg-black/50 backdrop-blur-sm border-b border-neutral-800/50'
+          ? "bg-neutral-900/95 backdrop-blur-lg shadow-lg border-b border-neutral-800"
+          : "bg-black/50 backdrop-blur-sm border-b border-neutral-800/50"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -53,7 +53,9 @@ export function Navigation() {
               <span className="text-2xl font-extrabold text-white">
                 AFRIGOALS
               </span>
-              <span className="text-xs text-neutral-400 font-medium tracking-wider">AFRICAN FOOTBALL</span>
+              <span className="text-xs text-neutral-400 font-medium tracking-wider">
+                AFRICAN FOOTBALL
+              </span>
             </div>
           </Link>
 
@@ -74,13 +76,13 @@ export function Navigation() {
           <div className="hidden md:flex items-center space-x-3">
             <Button
               variant="ghost"
-              onClick={() => router.push('/admin')}
+              onClick={() => router.push("/admin")}
               className="text-neutral-300 hover:text-white hover:bg-neutral-800 font-semibold px-6"
             >
               Sign In
             </Button>
             <Button
-              onClick={() => router.push('/admin')}
+              onClick={() => router.push("/admin")}
               className="bg-primary-500 hover:bg-primary-600 text-white font-semibold px-6 py-2.5 shadow-lg transition-all duration-300"
             >
               Get Started
@@ -113,7 +115,7 @@ export function Navigation() {
               <Button
                 variant="outline"
                 onClick={() => {
-                  router.push('/admin');
+                  router.push("/admin");
                   setIsMobileMenuOpen(false);
                 }}
                 className="w-full"
@@ -122,7 +124,7 @@ export function Navigation() {
               </Button>
               <Button
                 onClick={() => {
-                  router.push('/admin');
+                  router.push("/admin");
                   setIsMobileMenuOpen(false);
                 }}
                 className="w-full bg-primary-600 hover:bg-primary-700"

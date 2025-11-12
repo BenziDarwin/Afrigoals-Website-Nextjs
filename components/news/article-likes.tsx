@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { ThumbsUp, Heart, Share2 } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { ThumbsUp, Heart, Share2 } from "lucide-react";
 
 export function ArticleLikes({ articleId }: { articleId: string }) {
   const [likes, setLikes] = useState(0);
@@ -26,7 +26,7 @@ export function ArticleLikes({ articleId }: { articleId: string }) {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'Check out this article',
+        title: "Check out this article",
         url: window.location.href,
       });
     }
@@ -38,7 +38,7 @@ export function ArticleLikes({ articleId }: { articleId: string }) {
         <Button
           variant={isLiked ? "default" : "outline"}
           onClick={handleLike}
-          className={isLiked ? 'bg-primary-600 hover:bg-primary-700' : ''}
+          className={isLiked ? "bg-primary-600 hover:bg-primary-700" : ""}
         >
           <ThumbsUp size={18} className="mr-2" />
           {likes} Likes

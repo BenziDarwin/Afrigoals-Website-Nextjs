@@ -1,40 +1,40 @@
-import Link from 'next/link';
-import { Facebook, Twitter, Instagram, Linkedin, Youtube } from 'lucide-react';
+import Link from "next/link";
+import { Facebook, Twitter, Instagram, Linkedin, Youtube } from "lucide-react";
 
 export function Footer() {
   const footerLinks = {
     Product: [
-      { label: 'Features', href: '#features' },
-      { label: 'Pricing', href: '#pricing' },
-      { label: 'API', href: '/api' },
-      { label: 'Integrations', href: '/integrations' },
+      { label: "Features", href: "#features" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "API", href: "/api" },
+      { label: "Integrations", href: "/integrations" },
     ],
     Company: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Blog', href: '/blog' },
-      { label: 'Press Kit', href: '/press' },
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Press Kit", href: "/press" },
     ],
     Resources: [
-      { label: 'Documentation', href: '/docs' },
-      { label: 'Help Center', href: '/help' },
-      { label: 'Community', href: '/community' },
-      { label: 'Contact', href: '/contact' },
+      { label: "Documentation", href: "/docs" },
+      { label: "Help Center", href: "/help" },
+      { label: "Community", href: "/community" },
+      { label: "Contact", href: "/contact" },
     ],
     Legal: [
-      { label: 'Privacy Policy', href: '/privacy' },
-      { label: 'Terms of Service', href: '/terms' },
-      { label: 'Cookie Policy', href: '/cookies' },
-      { label: 'Security', href: '/security' },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms of Service", href: "/terms" },
+      { label: "Cookie Policy", href: "/cookies" },
+      { label: "Security", href: "/security" },
     ],
   };
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Youtube, href: "#", label: "YouTube" },
   ];
 
   return (
@@ -49,7 +49,8 @@ export function Footer() {
               <span className="text-2xl font-bold text-white">Afrigoals</span>
             </Link>
             <p className="text-neutral-400 text-sm mb-6">
-              Revolutionizing African football with advanced analytics and comprehensive management tools.
+              Revolutionizing African football with advanced analytics and
+              comprehensive management tools.
             </p>
             <div className="flex space-x-4">
               {socialLinks.map((social) => {
@@ -93,13 +94,22 @@ export function Footer() {
               © {new Date().getFullYear()} Afrigoals. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <Link href="/privacy" className="text-neutral-400 hover:text-primary-400 text-sm transition-colors">
+              <Link
+                href="/privacy"
+                className="text-neutral-400 hover:text-primary-400 text-sm transition-colors"
+              >
                 Privacy
               </Link>
-              <Link href="/terms" className="text-neutral-400 hover:text-primary-400 text-sm transition-colors">
+              <Link
+                href="/terms"
+                className="text-neutral-400 hover:text-primary-400 text-sm transition-colors"
+              >
                 Terms
               </Link>
-              <Link href="/cookies" className="text-neutral-400 hover:text-primary-400 text-sm transition-colors">
+              <Link
+                href="/cookies"
+                className="text-neutral-400 hover:text-primary-400 text-sm transition-colors"
+              >
                 Cookies
               </Link>
             </div>

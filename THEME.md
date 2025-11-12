@@ -9,28 +9,33 @@ All theme configurations are centralized in a single file for easy customization
 ## Available Theme Properties
 
 ### Colors
+
 - **Primary Colors**: Teal/Green palette (50-900 shades)
 - **Secondary Colors**: Orange palette (50-900 shades)
 - **Neutral Colors**: Gray palette for backgrounds and text
 - **Status Colors**: Success, Error, Warning
 
 ### Gradients
+
 - `primary`: Main gradient for buttons and highlights
 - `hero`: Hero section background gradient
 - `card`: Card background gradient
 - `overlay`: Overlay gradient for images
 
 ### Typography
+
 - Font sizes with responsive clamps
 - Font weights (light to extrabold)
 - Line heights (tight, normal, relaxed)
 
 ### Effects
+
 - Shadow levels (sm to xl, glow, inner)
 - Blur levels
 - Transition speeds and easing functions
 
 ### Spacing & Layout
+
 - Section spacing
 - Container max-widths
 - Border radius values

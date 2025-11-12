@@ -1,38 +1,59 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { Navigation } from '@/components/landing/navigation';
-import { Footer } from '@/components/landing/footer';
-import { mockMatches, mockClubs, mockLeagues } from '@/lib/mock-api';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Badge } from '@/components/ui/badge';
-import { format } from 'date-fns';
-import { useRouter } from 'next/navigation';
+import { useState } from "react";
+import { Navigation } from "@/components/landing/navigation";
+import { Footer } from "@/components/landing/footer";
+import { mockMatches, mockClubs, mockLeagues } from "@/lib/mock-api";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { format } from "date-fns";
+import { useRouter } from "next/navigation";
 
 export default function MatchesPage() {
-  const [selectedLeague, setSelectedLeague] = useState<string>('all');
+  const [selectedLeague, setSelectedLeague] = useState<string>("all");
   const router = useRouter();
 
-  const matchesWithClubs = mockMatches.map(match => ({
+  const matchesWithClubs = mockMatches.map((match) => ({
     ...match,
-    home_club: mockClubs.find(c => c.id === match.home_club_id),
-    away_club: mockClubs.find(c => c.id === match.away_club_id),
-    league: mockLeagues.find(l => l.id === match.league_id),
+    home_club: mockClubs.find((c) => c.id === match.home_club_id),
+    away_club: mockClubs.find((c) => c.id === match.away_club_id),
+    league: mockLeagues.find((l) => l.id === match.league_id),
   }));
 
-  const filteredMatches = selectedLeague === 'all'
-    ? matchesWithClubs
-    : matchesWithClubs.filter(m => m.league_id === selectedLeague);
+  const filteredMatches =
+    selectedLeague === "all"
+      ? matchesWithClubs
+      : matchesWithClubs.filter((m) => m.league_id === selectedLeague);
 
   const getStatusBadge = (status: string) => {
     switch (status) {
-      case 'live':
+      case "live":
         return <Badge className="bg-red-500 animate-pulse">LIVE</Badge>;
-      case 'completed':
+      case "completed":
         return <Badge className="bg-green-600">FT</Badge>;
-      case 'scheduled':
-        return <Badge variant="outline" className="border-neutral-600 text-neutral-400">SCH</Badge>;
+      case "scheduled":
+        return (
+          <Badge
+            variant="outline"
+            className="border-neutral-600 text-neutral-400"
+          >
+            SCH
+          </Badge>
+        );
       default:
         return null;
     }
@@ -63,9 +84,15 @@ export default function MatchesPage() {
                 <SelectValue placeholder="Select League" />
               </SelectTrigger>
               <SelectContent className="bg-neutral-900 border-neutral-800">
-                <SelectItem value="all" className="text-white">All Leagues</SelectItem>
-                {mockLeagues.map(league => (
-                  <SelectItem key={league.id} value={league.id} className="text-white">
+                <SelectItem value="all" className="text-white">
+                  All Leagues
+                </SelectItem>
+                {mockLeagues.map((league) => (
+                  <SelectItem
+                    key={league.id}
+                    value={league.id}
+                    className="text-white"
+                  >
                     {league.name}
                   </SelectItem>
                 ))}
@@ -79,10 +106,14 @@ export default function MatchesPage() {
                 <TableRow className="border-neutral-800 hover:bg-neutral-900">
                   <TableHead className="text-neutral-400">Date</TableHead>
                   <TableHead className="text-neutral-400">Home</TableHead>
-                  <TableHead className="text-neutral-400 text-center">Score</TableHead>
+                  <TableHead className="text-neutral-400 text-center">
+                    Score
+                  </TableHead>
                   <TableHead className="text-neutral-400">Away</TableHead>
                   <TableHead className="text-neutral-400">Venue</TableHead>
-                  <TableHead className="text-neutral-400 text-right">Status</TableHead>
+                  <TableHead className="text-neutral-400 text-right">
+                    Status
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -93,13 +124,14 @@ export default function MatchesPage() {
                     onClick={() => handleMatchClick(match.id)}
                   >
                     <TableCell className="text-neutral-300">
-                      {format(new Date(match.match_date), 'MMM d, HH:mm')}
+                      {format(new Date(match.match_date), "MMM d, HH:mm")}
                     </TableCell>
                     <TableCell className="text-white font-medium">
-                      {match.home_club?.name || 'TBD'}
+                      {match.home_club?.name || "TBD"}
                     </TableCell>
                     <TableCell className="text-center">
-                      {match.status === 'completed' || match.status === 'live' ? (
+                      {match.status === "completed" ||
+                      match.status === "live" ? (
                         <span className="text-white font-bold text-lg">
                           {match.home_score} - {match.away_score}
                         </span>
@@ -108,7 +140,7 @@ export default function MatchesPage() {
                       )}
                     </TableCell>
                     <TableCell className="text-white font-medium">
-                      {match.away_club?.name || 'TBD'}
+                      {match.away_club?.name || "TBD"}
                     </TableCell>
                     <TableCell className="text-neutral-400 text-sm">
                       {match.venue}

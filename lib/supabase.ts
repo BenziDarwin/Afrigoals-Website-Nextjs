@@ -1,4 +1,4 @@
-export type UserRole = 'league_manager' | 'club_manager' | 'admin' | 'user';
+export type UserRole = "league_manager" | "club_manager" | "admin" | "user";
 
 export interface User {
   id: string;
@@ -52,7 +52,7 @@ export interface Match {
   away_club_id: string;
   match_date: string;
   venue?: string;
-  status: 'scheduled' | 'live' | 'completed' | 'cancelled';
+  status: "scheduled" | "live" | "completed" | "cancelled";
   home_score: number;
   away_score: number;
   video_url?: string;
@@ -92,7 +92,7 @@ export interface NewsArticle {
   content: string;
   excerpt?: string;
   featured_image?: string;
-  category: 'news' | 'blog' | 'match_report';
+  category: "news" | "blog" | "match_report";
   published: boolean;
   published_at?: string;
   created_at: string;
@@ -101,7 +101,7 @@ export interface NewsArticle {
 
 export interface NewsFeed {
   id: string;
-  type: 'article' | 'video' | 'match_update' | 'external_link';
+  type: "article" | "video" | "match_update" | "external_link";
   title: string;
   description?: string;
   content_url?: string;

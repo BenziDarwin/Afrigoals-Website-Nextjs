@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { ArrowRight, Play } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Play } from "lucide-react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
@@ -17,13 +17,21 @@ export function HeroSection() {
 
       <div className="absolute inset-0">
         <div className="absolute inset-0 opacity-30">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '4s' }} />
-          <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl animate-pulse" style={{ animationDuration: '6s', animationDelay: '2s' }} />
+          <div
+            className="absolute top-20 left-10 w-72 h-72 bg-primary-500/20 rounded-full blur-3xl animate-pulse"
+            style={{ animationDuration: "4s" }}
+          />
+          <div
+            className="absolute bottom-20 right-10 w-96 h-96 bg-primary-400/20 rounded-full blur-3xl animate-pulse"
+            style={{ animationDuration: "6s", animationDelay: "2s" }}
+          />
         </div>
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+        <div
+          className={`max-w-5xl mx-auto text-center transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
+        >
           <div className="inline-block mb-6">
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 text-sm text-neutral-300">
               <span className="w-2 h-2 bg-primary-500 rounded-full mr-2 animate-pulse" />
@@ -42,8 +50,9 @@ export function HeroSection() {
           </h1>
 
           <p className="text-lg md:text-xl text-neutral-400 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Discover the passion, talent, and stories of African football. Follow your favorite teams,
-            track player journeys, and connect with the continent's vibrant football community.
+            Discover the passion, talent, and stories of African football.
+            Follow your favorite teams, track player journeys, and connect with
+            the continent's vibrant football community.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -68,15 +77,21 @@ export function HeroSection() {
           <div className="mt-20">
             <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  50+
+                </div>
                 <div className="text-sm text-neutral-500">African Leagues</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">500+</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  500+
+                </div>
                 <div className="text-sm text-neutral-500">Football Clubs</div>
               </div>
               <div>
-                <div className="text-3xl md:text-4xl font-bold text-white mb-2">10K+</div>
+                <div className="text-3xl md:text-4xl font-bold text-white mb-2">
+                  10K+
+                </div>
                 <div className="text-sm text-neutral-500">Players</div>
               </div>
             </div>

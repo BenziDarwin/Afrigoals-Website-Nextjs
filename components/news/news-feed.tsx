@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Clock, Eye, MessageCircle } from 'lucide-react';
-import { mockNewsFeed } from '@/lib/mock-api';
-import { format } from 'date-fns';
+import { useEffect, useState } from "react";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Clock, Eye, MessageCircle } from "lucide-react";
+import { mockNewsFeed } from "@/lib/mock-api";
+import { format } from "date-fns";
 
 export function NewsFeed() {
   const [feed, setFeed] = useState<typeof mockNewsFeed>([]);
@@ -24,16 +24,16 @@ export function NewsFeed() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case 'article':
-        return 'bg-blue-500';
-      case 'video':
-        return 'bg-red-500';
-      case 'match_update':
-        return 'bg-green-500';
-      case 'external_link':
-        return 'bg-purple-500';
+      case "article":
+        return "bg-blue-500";
+      case "video":
+        return "bg-red-500";
+      case "match_update":
+        return "bg-green-500";
+      case "external_link":
+        return "bg-purple-500";
       default:
-        return 'bg-neutral-500';
+        return "bg-neutral-500";
     }
   };
 
@@ -41,7 +41,10 @@ export function NewsFeed() {
     return (
       <div className="space-y-4">
         {[...Array(3)].map((_, i) => (
-          <Card key={i} className="p-6 bg-neutral-800 border-neutral-700 animate-pulse">
+          <Card
+            key={i}
+            className="p-6 bg-neutral-800 border-neutral-700 animate-pulse"
+          >
             <div className="h-6 bg-neutral-700 rounded w-3/4 mb-4"></div>
             <div className="h-4 bg-neutral-700 rounded w-1/2"></div>
           </Card>
@@ -70,12 +73,14 @@ export function NewsFeed() {
 
             <div className="flex-1">
               <div className="flex items-center space-x-2 mb-2">
-                <Badge className={`${getTypeColor(item.type)} text-white capitalize`}>
-                  {item.type.replace('_', ' ')}
+                <Badge
+                  className={`${getTypeColor(item.type)} text-white capitalize`}
+                >
+                  {item.type.replace("_", " ")}
                 </Badge>
                 <span className="text-neutral-500 text-sm flex items-center">
                   <Clock size={14} className="mr-1" />
-                  {format(new Date(item.created_at), 'MMM d, yyyy')}
+                  {format(new Date(item.created_at), "MMM d, yyyy")}
                 </span>
               </div>
 
@@ -84,7 +89,9 @@ export function NewsFeed() {
               </h3>
 
               {item.description && (
-                <p className="text-neutral-400 mb-4 line-clamp-2">{item.description}</p>
+                <p className="text-neutral-400 mb-4 line-clamp-2">
+                  {item.description}
+                </p>
               )}
 
               <div className="flex items-center space-x-4 text-sm text-neutral-500">
