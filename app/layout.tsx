@@ -1,7 +1,10 @@
-import "./globals.css";
+import { Footer } from "@/components/landing/footer";
+import { Navigation } from "@/components/landing/navigation";
+import { AuthProvider } from "@/lib/auth-context";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { AuthProvider } from "@/lib/auth-context";
+import "./global.css";
+import { ThemeProvider } from "@/components/theme-provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +22,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <AuthProvider>{children}</AuthProvider>
+        <ThemeProvider>
+          <Navigation />
+          <AuthProvider>{children}</AuthProvider>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

@@ -88,15 +88,15 @@ function FeatureCard({
       }`}
       style={{ transitionDelay: `${index * 100}ms` }}
     >
-      <Card className="p-8 h-full bg-neutral-800/50 border-neutral-700 hover:border-primary-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/10 group">
-        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-          <Icon className="w-7 h-7 text-white" />
+      <Card className="p-8 h-full bg-card border-border hover:border-primary/60 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20 group">
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <Icon className="w-7 h-7 text-primary-foreground" />
         </div>
 
-        <h3 className="text-xl font-semibold mb-3 text-white">
+        <h3 className="text-xl font-semibold mb-3 text-foreground">
           {feature.title}
         </h3>
-        <p className="text-neutral-400 leading-relaxed">
+        <p className="text-muted-foreground leading-relaxed">
           {feature.description}
         </p>
       </Card>
@@ -106,13 +106,13 @@ function FeatureCard({
 
 export function FeaturesSection() {
   return (
-    <section className="py-24 bg-gradient-to-b from-neutral-900 to-neutral-800">
+    <section className="py-24 bg-background">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
             Everything You Need
           </h2>
-          <p className="text-xl text-neutral-400 max-w-2xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Powerful features designed to elevate African football to the next
             level
           </p>

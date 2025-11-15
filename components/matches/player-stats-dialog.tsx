@@ -32,7 +32,6 @@ export function PlayerStatsDialog({
   onClose,
 }: PlayerStatsDialogProps) {
   const router = useRouter();
-
   if (!player) return null;
 
   const stats = player.stats || {};
@@ -78,19 +77,18 @@ export function PlayerStatsDialog({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="bg-neutral-900 border-neutral-800 text-white max-w-2xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-5xl w-full bg-neutral-950 border border-neutral-800 text-white max-h-[90vh] overflow-y-auto p-8 rounded-xl animate-in fade-in-50 scale-in-95 duration-500">
         <DialogHeader>
-          <DialogTitle className="text-2xl font-bold">
+          <DialogTitle className="text-3xl font-bold mb-4">
             Player Statistics
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-6 animate-in fade-in-50 slide-in-from-bottom-5 duration-500">
+        <div className="space-y-8">
+          {/* Player Info */}
           <div className="flex items-center space-x-6">
-            <div className="w-24 h-24 rounded-full bg-primary-500 flex items-center justify-center">
-              <span className="text-white font-bold text-3xl">
-                {player.jersey_number}
-              </span>
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white text-4xl font-bold">
+              {player.jersey_number}
             </div>
             <div className="flex-1">
               <h2 className="text-3xl font-bold text-white mb-2">
@@ -114,20 +112,21 @@ export function PlayerStatsDialog({
             </div>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {/* Stats Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
             {statCards.map((stat, index) => {
               const Icon = stat.icon;
               return (
                 <Card
                   key={index}
-                  className="bg-neutral-800 border-neutral-700 p-4 animate-in fade-in-50 slide-in-from-bottom-5"
-                  style={{ animationDelay: `${index * 50}ms` }}
+                  className="bg-neutral-800 border border-neutral-700 p-5 hover:scale-105 transition-transform duration-300 animate-in fade-in-50 slide-in-from-bottom-5"
+                  style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-sm text-neutral-400">
                       {stat.label}
                     </span>
-                    <Icon className={`w-4 h-4 ${stat.color}`} />
+                    <Icon className={`${stat.color} w-5 h-5`} />
                   </div>
                   <div className="text-2xl font-bold text-white">
                     {stat.value}
@@ -137,11 +136,12 @@ export function PlayerStatsDialog({
             })}
           </div>
 
+          {/* Performance / Goalkeeper Stats */}
           {player.position !== "Goalkeeper" && (
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white flex items-center">
-                <Award className="w-5 h-5 mr-2 text-primary-400" />
-                Performance Metrics
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <Award className="w-5 h-5 text-primary-400" /> Performance
+                Metrics
               </h3>
               <div className="space-y-3">
                 <StatBar label="Shots" value={stats.shots || 0} max={100} />
@@ -153,9 +153,8 @@ export function PlayerStatsDialog({
 
           {player.position === "Goalkeeper" && stats.saves && (
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white flex items-center">
-                <Award className="w-5 h-5 mr-2 text-primary-400" />
-                Goalkeeper Stats
+              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
+                <Award className="w-5 h-5 text-primary-400" /> Goalkeeper Stats
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <Card className="bg-neutral-800 border-neutral-700 p-4">
@@ -176,8 +175,9 @@ export function PlayerStatsDialog({
             </div>
           )}
 
-          <div className="pt-4 border-t border-neutral-800">
-            <div className="grid grid-cols-2 gap-4 text-sm mb-4">
+          {/* Footer / Player Info */}
+          <div className="pt-6 border-t border-neutral-800 space-y-4">
+            <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-neutral-500">Age:</span>
                 <span className="text-white ml-2">
@@ -196,7 +196,7 @@ export function PlayerStatsDialog({
               </div>
             </div>
             <Button
-              className="w-full bg-primary-600 hover:bg-primary-700"
+              className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
               onClick={() => {
                 onClose();
                 router.push(`/players/${player.id}`);
@@ -224,7 +224,7 @@ function StatBar({
   const percentage = Math.min((value / max) * 100, 100);
 
   return (
-    <div>
+    <div className="animate-in fade-in-50 slide-in-from-left-5 duration-500">
       <div className="flex justify-between text-sm mb-1">
         <span className="text-neutral-400">{label}</span>
         <span className="text-white font-medium">{value}</span>

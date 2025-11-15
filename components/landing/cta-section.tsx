@@ -27,12 +27,15 @@ export function CTASection() {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-24 bg-neutral-900">
+    <section ref={sectionRef} className="py-24 bg-neutral">
       <div className="container mx-auto px-6">
         <div
-          className={`relative rounded-3xl overflow-hidden transition-all duration-1000 ${isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+          className={`relative rounded-3xl overflow-hidden transition-all duration-1000 ${
+            isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+          }`}
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-primary-800" />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-900" />
+
           <div
             className="absolute inset-0 opacity-20"
             style={{
@@ -44,7 +47,9 @@ export function CTASection() {
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
               Ready to Transform African Football?
             </h2>
-            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+
+            {/* Hard-coded light-blue text (not dependent on theme) */}
+            <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
               Join the platform that's revolutionizing how football is managed,
               analyzed, and celebrated across Africa.
             </p>
@@ -52,7 +57,7 @@ export function CTASection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button
                 size="lg"
-                className="bg-white text-primary-600 hover:bg-neutral-100 px-8 py-6 text-lg group"
+                className="bg-white text-blue-900 hover:bg-blue-700 hover:text-white px-8 py-6 text-lg group"
               >
                 Start Free Trial
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
@@ -61,7 +66,7 @@ export function CTASection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg"
+                className="border-white text-white hover:bg-white/10 px-8 py-6 text-lg bg-secondary*10"
               >
                 Schedule Demo
               </Button>
