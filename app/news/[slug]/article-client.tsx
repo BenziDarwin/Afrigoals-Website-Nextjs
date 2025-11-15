@@ -17,21 +17,19 @@ export default function ArticleClient({ slug }: { slug: string }) {
 
   if (!article) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
+      <div className="min-h-screen bg-gray-50 text-gray-900 flex items-center justify-center">
         Article not found
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-black">
-      <Navigation />
-
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-6 max-w-4xl">
           <button
             onClick={() => router.back()}
-            className="flex items-center text-neutral-400 hover:text-white mb-8 transition-colors"
+            className="flex items-center text-gray-500 hover:text-gray-900 mb-8 transition-colors"
           >
             <ArrowLeft size={20} className="mr-2" />
             Back to News
@@ -40,25 +38,25 @@ export default function ArticleClient({ slug }: { slug: string }) {
           <article className="animate-in fade-in-50 slide-in-from-bottom-5 duration-700">
             <div className="mb-8">
               <div className="flex flex-wrap gap-2 mb-4">
-                <Badge className="bg-primary-500 capitalize">
+                <Badge className="bg-primary-500 capitalize text-white">
                   {article.category.replace("_", " ")}
                 </Badge>
                 {article.tags?.map((tag, index) => (
                   <Badge
                     key={index}
                     variant="outline"
-                    className="border-neutral-700 text-neutral-300"
+                    className="border-gray-300 text-gray-700 hover:border-primary-500 hover:text-primary-500 transition-colors cursor-pointer"
                   >
                     {tag}
                   </Badge>
                 ))}
               </div>
 
-              <h1 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 {article.title}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-neutral-400 mb-6">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-6">
                 <div className="flex items-center">
                   <User size={16} className="mr-1" />
                   {article.author_name}
@@ -84,36 +82,36 @@ export default function ArticleClient({ slug }: { slug: string }) {
               )}
             </div>
 
-            <div className="prose prose-invert prose-lg max-w-none">
+            <div className="prose prose-lg max-w-none">
               <ReactMarkdown
                 components={{
                   h2: ({ children }) => (
-                    <h2 className="text-3xl font-bold text-white mt-8 mb-4">
+                    <h2 className="text-3xl font-bold text-gray-900 mt-8 mb-4">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-2xl font-bold text-white mt-6 mb-3">
+                    <h3 className="text-2xl font-bold text-gray-900 mt-6 mb-3">
                       {children}
                     </h3>
                   ),
                   p: ({ children }) => (
-                    <p className="text-neutral-300 leading-relaxed mb-4">
+                    <p className="text-gray-700 leading-relaxed mb-4">
                       {children}
                     </p>
                   ),
                   ul: ({ children }) => (
-                    <ul className="list-disc list-inside text-neutral-300 mb-4 space-y-2">
+                    <ul className="list-disc list-inside text-gray-700 mb-4 space-y-2">
                       {children}
                     </ul>
                   ),
                   ol: ({ children }) => (
-                    <ol className="list-decimal list-inside text-neutral-300 mb-4 space-y-2">
+                    <ol className="list-decimal list-inside text-gray-700 mb-4 space-y-2">
                       {children}
                     </ol>
                   ),
                   blockquote: ({ children }) => (
-                    <blockquote className="border-l-4 border-primary-500 pl-4 italic text-neutral-400 my-6">
+                    <blockquote className="border-l-4 border-primary-500 pl-4 italic text-gray-600 my-6">
                       {children}
                     </blockquote>
                   ),
@@ -123,14 +121,14 @@ export default function ArticleClient({ slug }: { slug: string }) {
               </ReactMarkdown>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-neutral-800">
+            <div className="mt-12 pt-8 border-t border-gray-300">
               <div className="flex flex-wrap gap-2">
-                <span className="text-neutral-500">Tags:</span>
+                <span className="text-gray-500">Tags:</span>
                 {article.tags?.map((tag, index) => (
                   <Badge
                     key={index}
                     variant="outline"
-                    className="border-neutral-700 text-neutral-300 hover:border-primary-500 hover:text-primary-400 transition-colors cursor-pointer"
+                    className="border-gray-300 text-gray-700 hover:border-primary-500 hover:text-primary-500 transition-colors cursor-pointer"
                   >
                     {tag}
                   </Badge>
@@ -148,8 +146,6 @@ export default function ArticleClient({ slug }: { slug: string }) {
           </article>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

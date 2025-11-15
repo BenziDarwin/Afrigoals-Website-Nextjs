@@ -20,38 +20,36 @@ export default function NewsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <Navigation />
-
+    <div className="min-h-screen bg-gray-50 text-gray-800">
       <div className="pt-24 pb-16">
         <div className="container mx-auto px-6">
           <div className="mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
               News & Updates
             </h1>
-            <p className="text-xl text-neutral-400">
+            <p className="text-xl text-gray-600">
               Stay updated with the latest football news, match reports, and
               analysis
             </p>
           </div>
 
           <Tabs defaultValue="all" className="space-y-6">
-            <TabsList className="bg-neutral-900 border-neutral-800">
+            <TabsList className="bg-gray-200 border border-gray-300">
               <TabsTrigger
                 value="all"
-                className="data-[state=active]:bg-primary-500"
+                className="data-[state=active]:bg-primary-500 data-[state=active]:text-white"
               >
                 All News
               </TabsTrigger>
               <TabsTrigger
                 value="articles"
-                className="data-[state=active]:bg-primary-500"
+                className="data-[state=active]:bg-primary-500 data-[state=active]:text-white"
               >
                 Featured Articles
               </TabsTrigger>
               <TabsTrigger
                 value="updates"
-                className="data-[state=active]:bg-primary-500"
+                className="data-[state=active]:bg-primary-500 data-[state=active]:text-white"
               >
                 Match Updates
               </TabsTrigger>
@@ -63,7 +61,7 @@ export default function NewsPage() {
                   {mockArticlesDetailed.map((article) => (
                     <Card
                       key={article.id}
-                      className="bg-neutral-900 border-neutral-800 overflow-hidden hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
+                      className="bg-white border border-gray-300 overflow-hidden hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
                       onClick={() => handleArticleClick(article.slug)}
                     >
                       <div className="md:flex">
@@ -78,24 +76,24 @@ export default function NewsPage() {
                         )}
                         <div className="p-6 flex-1">
                           <div className="flex items-center space-x-2 mb-3">
-                            <Badge className="bg-primary-500 capitalize">
+                            <Badge className="bg-primary-500 capitalize text-white">
                               {article.category.replace("_", " ")}
                             </Badge>
-                            <span className="text-neutral-500 text-sm flex items-center">
+                            <span className="text-gray-500 text-sm flex items-center">
                               <Clock size={14} className="mr-1" />
                               {article.read_time}
                             </span>
                           </div>
 
-                          <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                          <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-500 transition-colors">
                             {article.title}
                           </h2>
 
-                          <p className="text-neutral-400 mb-4 line-clamp-3">
+                          <p className="text-gray-600 mb-4 line-clamp-3">
                             {article.excerpt}
                           </p>
 
-                          <div className="flex items-center space-x-4 text-sm text-neutral-500">
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
                             <span className="flex items-center">
                               <User size={14} className="mr-1" />
                               {article.author_name}
@@ -108,20 +106,6 @@ export default function NewsPage() {
                               )}
                             </span>
                           </div>
-
-                          {article.tags && (
-                            <div className="flex flex-wrap gap-2 mt-4">
-                              {article.tags.slice(0, 3).map((tag, index) => (
-                                <Badge
-                                  key={index}
-                                  variant="outline"
-                                  className="border-neutral-700 text-neutral-400 text-xs"
-                                >
-                                  {tag}
-                                </Badge>
-                              ))}
-                            </div>
-                          )}
                         </div>
                       </div>
                     </Card>
@@ -132,7 +116,7 @@ export default function NewsPage() {
                   {mockArticlesDetailed.map((article) => (
                     <Card
                       key={article.id}
-                      className="bg-neutral-900 border-neutral-800 overflow-hidden hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
+                      className="bg-white border border-gray-300 overflow-hidden hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
                       onClick={() => handleArticleClick(article.slug)}
                     >
                       <div className="md:flex">
@@ -147,24 +131,24 @@ export default function NewsPage() {
                         )}
                         <div className="p-6 flex-1">
                           <div className="flex items-center space-x-2 mb-3">
-                            <Badge className="bg-primary-500 capitalize">
+                            <Badge className="bg-primary-500 capitalize text-white">
                               {article.category.replace("_", " ")}
                             </Badge>
-                            <span className="text-neutral-500 text-sm flex items-center">
+                            <span className="text-gray-500 text-sm flex items-center">
                               <Clock size={14} className="mr-1" />
                               {article.read_time}
                             </span>
                           </div>
 
-                          <h2 className="text-2xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                          <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-500 transition-colors">
                             {article.title}
                           </h2>
 
-                          <p className="text-neutral-400 mb-4">
+                          <p className="text-gray-600 mb-4">
                             {article.excerpt}
                           </p>
 
-                          <div className="flex items-center space-x-4 text-sm text-neutral-500">
+                          <div className="flex items-center space-x-4 text-sm text-gray-500">
                             <span className="flex items-center">
                               <User size={14} className="mr-1" />
                               {article.author_name}
@@ -189,7 +173,7 @@ export default function NewsPage() {
                     .map((item) => (
                       <Card
                         key={item.id}
-                        className="p-6 bg-neutral-900 border-neutral-800 hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
+                        className="p-6 bg-white border border-gray-300 hover:border-primary-500/50 transition-all duration-300 cursor-pointer group"
                       >
                         <div className="flex items-start space-x-4">
                           {item.thumbnail_url && (
@@ -207,7 +191,7 @@ export default function NewsPage() {
                               <Badge className="bg-green-500 text-white capitalize">
                                 {item.type.replace("_", " ")}
                               </Badge>
-                              <span className="text-neutral-500 text-sm flex items-center">
+                              <span className="text-gray-500 text-sm flex items-center">
                                 <Clock size={14} className="mr-1" />
                                 {format(
                                   new Date(item.created_at),
@@ -216,12 +200,12 @@ export default function NewsPage() {
                               </span>
                             </div>
 
-                            <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-primary-400 transition-colors">
+                            <h3 className="text-xl font-semibold text-gray-900 mb-2 group-hover:text-primary-500 transition-colors">
                               {item.title}
                             </h3>
 
                             {item.description && (
-                              <p className="text-neutral-400">
+                              <p className="text-gray-600">
                                 {item.description}
                               </p>
                             )}
@@ -233,8 +217,8 @@ export default function NewsPage() {
               </div>
 
               <div className="space-y-6">
-                <Card className="p-6 bg-neutral-900 border-neutral-800">
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                <Card className="p-6 bg-white border border-gray-300">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
                     Trending Topics
                   </h3>
                   <div className="space-y-3">
@@ -247,7 +231,7 @@ export default function NewsPage() {
                     ].map((topic, i) => (
                       <button
                         key={i}
-                        className="w-full text-left px-3 py-2 bg-neutral-800 hover:bg-neutral-700 rounded-lg transition-colors text-neutral-300 hover:text-white"
+                        className="w-full text-left px-3 py-2 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors text-gray-700 hover:text-gray-900"
                       >
                         {topic}
                       </button>
@@ -255,8 +239,8 @@ export default function NewsPage() {
                   </div>
                 </Card>
 
-                <Card className="p-6 bg-neutral-900 border-neutral-800">
-                  <h3 className="text-xl font-semibold text-white mb-4">
+                <Card className="p-6 bg-white border border-gray-300">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-4">
                     Featured Writers
                   </h3>
                   <div className="space-y-3">
@@ -268,10 +252,10 @@ export default function NewsPage() {
                           </span>
                         </div>
                         <div>
-                          <div className="text-white font-medium">
+                          <div className="text-gray-900 font-medium">
                             {article.author_name}
                           </div>
-                          <div className="text-neutral-400 text-sm">
+                          <div className="text-gray-600 text-sm">
                             Sports Journalist
                           </div>
                         </div>
@@ -284,8 +268,6 @@ export default function NewsPage() {
           </Tabs>
         </div>
       </div>
-
-      <Footer />
     </div>
   );
 }

@@ -22,10 +22,10 @@ export function Navigation() {
   }, []);
 
   const navLinks = [
-    { href: "/#features", label: "Features" },
+    { href: "/features", label: "Features" },
     { href: "/matches", label: "Matches" },
     { href: "/news", label: "News" },
-    { href: "/#about", label: "About" },
+    { href: "/about", label: "About" },
   ];
 
   return (

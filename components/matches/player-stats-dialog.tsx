@@ -77,7 +77,7 @@ export function PlayerStatsDialog({
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl w-full bg-neutral-950 border border-neutral-800 text-white max-h-[90vh] overflow-y-auto p-8 rounded-xl animate-in fade-in-50 scale-in-95 duration-500">
+      <DialogContent className="max-w-5xl w-full bg-white border border-gray-200 text-gray-800 max-h-[90vh] overflow-y-auto p-8 rounded-xl animate-in fade-in-50 scale-in-95 duration-500">
         <DialogHeader>
           <DialogTitle className="text-3xl font-bold mb-4">
             Player Statistics
@@ -87,24 +87,24 @@ export function PlayerStatsDialog({
         <div className="space-y-8">
           {/* Player Info */}
           <div className="flex items-center space-x-6">
-            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white text-4xl font-bold">
+            <div className="w-28 h-28 rounded-full bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center text-white text-4xl font-bold">
               {player.jersey_number}
             </div>
             <div className="flex-1">
-              <h2 className="text-3xl font-bold text-white mb-2">
-                {player.name}
-              </h2>
+              <h2 className="text-3xl font-bold mb-2">{player.name}</h2>
               <div className="flex flex-wrap gap-2">
-                <Badge className="bg-primary-500">{player.position}</Badge>
+                <Badge className="bg-primary-500 text-white">
+                  {player.position}
+                </Badge>
                 <Badge
                   variant="outline"
-                  className="border-neutral-700 text-neutral-300"
+                  className="border-gray-300 text-gray-700"
                 >
                   #{player.jersey_number}
                 </Badge>
                 <Badge
                   variant="outline"
-                  className="border-neutral-700 text-neutral-300"
+                  className="border-gray-300 text-gray-700"
                 >
                   {player.nationality}
                 </Badge>
@@ -119,18 +119,14 @@ export function PlayerStatsDialog({
               return (
                 <Card
                   key={index}
-                  className="bg-neutral-800 border border-neutral-700 p-5 hover:scale-105 transition-transform duration-300 animate-in fade-in-50 slide-in-from-bottom-5"
+                  className="bg-gray-100 border border-gray-200 p-5 hover:scale-105 transition-transform duration-300 animate-in fade-in-50 slide-in-from-bottom-5"
                   style={{ animationDelay: `${index * 75}ms` }}
                 >
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm text-neutral-400">
-                      {stat.label}
-                    </span>
+                    <span className="text-gray-500 text-sm">{stat.label}</span>
                     <Icon className={`${stat.color} w-5 h-5`} />
                   </div>
-                  <div className="text-2xl font-bold text-white">
-                    {stat.value}
-                  </div>
+                  <div className="text-2xl font-bold">{stat.value}</div>
                 </Card>
               );
             })}
@@ -139,9 +135,8 @@ export function PlayerStatsDialog({
           {/* Performance / Goalkeeper Stats */}
           {player.position !== "Goalkeeper" && (
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary-400" /> Performance
-                Metrics
+              <h3 className="text-lg font-semibold flex items-center gap-2 text-primary-600">
+                <Award className="w-5 h-5" /> Performance Metrics
               </h3>
               <div className="space-y-3">
                 <StatBar label="Shots" value={stats.shots || 0} max={100} />
@@ -153,42 +148,36 @@ export function PlayerStatsDialog({
 
           {player.position === "Goalkeeper" && stats.saves && (
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-white flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary-400" /> Goalkeeper Stats
+              <h3 className="text-lg font-semibold flex items-center gap-2 text-primary-600">
+                <Award className="w-5 h-5" /> Goalkeeper Stats
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                <Card className="bg-neutral-800 border-neutral-700 p-4">
-                  <div className="text-sm text-neutral-400 mb-1">Saves</div>
-                  <div className="text-2xl font-bold text-white">
-                    {stats.saves}
-                  </div>
+                <Card className="bg-gray-100 border-gray-200 p-4">
+                  <div className="text-sm text-gray-500 mb-1">Saves</div>
+                  <div className="text-2xl font-bold">{stats.saves}</div>
                 </Card>
-                <Card className="bg-neutral-800 border-neutral-700 p-4">
-                  <div className="text-sm text-neutral-400 mb-1">
-                    Clean Sheets
-                  </div>
-                  <div className="text-2xl font-bold text-white">
-                    {stats.clean_sheets}
-                  </div>
+                <Card className="bg-gray-100 border-gray-200 p-4">
+                  <div className="text-sm text-gray-500 mb-1">Clean Sheets</div>
+                  <div className="text-2xl font-bold">{stats.clean_sheets}</div>
                 </Card>
               </div>
             </div>
           )}
 
           {/* Footer / Player Info */}
-          <div className="pt-6 border-t border-neutral-800 space-y-4">
+          <div className="pt-6 border-t border-gray-200 space-y-4">
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
-                <span className="text-neutral-500">Age:</span>
-                <span className="text-white ml-2">
+                <span className="text-gray-500">Age:</span>
+                <span className="ml-2 font-medium">
                   {new Date().getFullYear() -
                     new Date(player.date_of_birth).getFullYear()}{" "}
                   years
                 </span>
               </div>
               <div>
-                <span className="text-neutral-500">Goals/Match:</span>
-                <span className="text-white ml-2">
+                <span className="text-gray-500">Goals/Match:</span>
+                <span className="ml-2 font-medium">
                   {stats.matches
                     ? (stats.goals / stats.matches).toFixed(2)
                     : "0.00"}
@@ -196,7 +185,7 @@ export function PlayerStatsDialog({
               </div>
             </div>
             <Button
-              className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700"
+              className="w-full bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white"
               onClick={() => {
                 onClose();
                 router.push(`/players/${player.id}`);
@@ -226,10 +215,10 @@ function StatBar({
   return (
     <div className="animate-in fade-in-50 slide-in-from-left-5 duration-500">
       <div className="flex justify-between text-sm mb-1">
-        <span className="text-neutral-400">{label}</span>
-        <span className="text-white font-medium">{value}</span>
+        <span className="text-gray-500">{label}</span>
+        <span className="font-medium">{value}</span>
       </div>
-      <div className="h-2 bg-neutral-800 rounded-full overflow-hidden">
+      <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
         <div
           className="h-full bg-gradient-to-r from-primary-500 to-blue-500 rounded-full transition-all duration-1000 ease-out"
           style={{ width: `${percentage}%` }}
